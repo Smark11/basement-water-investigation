@@ -86,6 +86,11 @@ Flooring verdict: wet-zone flooring is unsalvageable (adhesive re-emulsification
 - Report updated: hatchway cause raised 55% → 70% ("LEADING"), evidence rewritten around the drainless-reservoir finding, starred test card updated with the inspection result + pre-rain mitigations (bulkhead cover/tarp, caulk door seams + sill joint, hydraulic cement inside once dry, downspout extension), chart aria-label revised.
 - Remaining confirmation steps: interior threshold/sill inspection for rust wicking + seam-trail origin; hose test after things dry.
 
+### 15:05 — Bulkhead inspection: rusted through with daylight visible → diagnosis effectively confirmed
+- Homeowner reports the metal hatchway is rusted essentially entirely around the bulkhead, with rusted-through holes open to daylight. Combined with the drainless still-damp stairwell, dry fresh holes at the barrel, the graded slab, the seam trail, and the rust-orange ooze, the surface-entry diagnosis is effectively confirmed (85% in the report; formal proof = interior sill trail check / hose test / dry floor through a covered-bulkhead rain).
+- Report updated to final form on this evidence: hero "key insight" rewritten to the landed conclusion (water rides on top of the slab from the hatchway; the pump guards the ground and the water never touches the ground; fix starts at the top of the stairs), cause #1 at 85% "EFFECTIVELY CONFIRMED", fact card updated, starred test card now records the inspection results + urgent tarp/cover guidance, Tier 1 gains "cover the bulkhead" ($20-150, highest-leverage dollar), Tier 2 gains "replace the bulkhead" (~$1,500-2,500, now the primary water-path repair).
+- Advice to homeowner: bulkhead is beyond caulk/gaskets — replacement; tarp it before the next rain; flooring verdict and mold precautions unchanged.
+
 ### Pending
 - [ ] `gh auth login` (user action) — STILL NOT DONE; blocks publishing.
 - [ ] Create public GitHub repo `basement-water-investigation`, push, enable Pages, verify live URL.
