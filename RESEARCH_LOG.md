@@ -107,6 +107,11 @@ Flooring verdict: wet-zone flooring is unsalvageable (adhesive re-emulsification
 - Re-floor the strip with matching LifeProof, re-glued, only after: bulkhead replaced → slab cleaned + passes taped plastic-sheet test → ideally one dry rain cycle. Cost: ~$3-4/sq ft material DIY; $3-7/sq ft hired tear-out+install. Installer ASTM F710 letter still worth sending.
 - Report: flooring-update callout rewritten (click-lock salvage path removed; conditional language dropped).
 
-### Pending
-- [ ] `gh auth login` (user action) — STILL NOT DONE; blocks publishing.
-- [ ] Create public GitHub repo `basement-water-investigation`, push, enable Pages, verify live URL.
+### 15:45 — Drying protocol provided (tarp phase, before new bulkhead)
+- Sequence: (1) lift wet strip FIRST — trapped water can't evaporate through waterproof vinyl; wet-vac/squeegee pool into sump pit, scrape failed adhesive; (2) windows/doors CLOSED (66°F dew point — ventilation adds water); 50-pint dehumidifier at 45-50% RH draining to pit + box fans low across slab + AC; (3) wet-vac and dry the stairwell base behind interior door (tarp = roof over outside doors, lapped/sloped/secured); (4) verify with taped plastic-sheet test (48-72h, no condensation) and pin moisture meter flat-lining vs known-dry slab. Timeline ~1-2 weeks. Re-glue new flooring only after slab passes + one dry rain cycle.
+
+### 17:10 — Published
+- Homeowner completed `gh auth login` (account: Smark11; credential stored in macOS keychain — future sessions can push without re-auth).
+- Created public repo `Smark11/basement-water-investigation`, pushed all commits, enabled GitHub Pages (main branch, root).
+- Live report: https://smark11.github.io/basement-water-investigation/
+- Investigation complete: cause effectively confirmed (rusted-through bulkhead + drainless stairwell → surface water riding the graded slab ~25 ft under the glued flooring to the sump-corner low point). Fix: tarp now → replace bulkhead (~$1,500-2,500); tear out + re-floor wet strip only; no French drain needed.
