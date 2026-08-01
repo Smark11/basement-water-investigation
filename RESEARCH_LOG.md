@@ -102,6 +102,11 @@ Flooring verdict: wet-zone flooring is unsalvageable (adhesive re-emulsification
 - Math: Jul 28-29 storm = 4.3" on a ~30 sq ft bulkhead footprint ≈ 80 gallons direct rainfall through the rusted-open doors (before any downspout/grade contribution). Wetting the whole 25 ft × ~8 ft trail as a 1/16" film under the flooring ≈ 8 gallons (1/8" film ≈ 16 gal). One storm supplies 5-10× the full-path requirement; the surplus tens of gallons form the standing pool at the low corner. Distance is trivial: waterproof floor over smooth slab = sealed tilted channel; 1/8"/ft grade = 3" drop over 25 ft.
 - Report updated: fact card now records the continuous trail + drying gradient; cause #1 card gains the volume-check paragraph.
 
+### 15:35 — Homeowner: tiles are not click-lock → glued LifeProof confirmed
+- Glue-down verdict stands for the wet zone: tear out the hatchway→sump trail + 2-ft margin, scrape re-emulsified adhesive (heat gun + scraper, respirator), replace that strip only. Dry majority of floor stays — with the acute source being the hatchway (not groundwater), the rest of the glued floor faces only ordinary slab vapor once the bulkhead is fixed.
+- Re-floor the strip with matching LifeProof, re-glued, only after: bulkhead replaced → slab cleaned + passes taped plastic-sheet test → ideally one dry rain cycle. Cost: ~$3-4/sq ft material DIY; $3-7/sq ft hired tear-out+install. Installer ASTM F710 letter still worth sending.
+- Report: flooring-update callout rewritten (click-lock salvage path removed; conditional language dropped).
+
 ### Pending
 - [ ] `gh auth login` (user action) — STILL NOT DONE; blocks publishing.
 - [ ] Create public GitHub repo `basement-water-investigation`, push, enable Pages, verify live URL.
