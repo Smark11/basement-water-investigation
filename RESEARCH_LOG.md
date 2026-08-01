@@ -51,7 +51,12 @@ Flooring verdict: wet-zone flooring is unsalvageable (adhesive re-emulsification
 - Sanitized photos for the PUBLIC repo: re-encoded via PIL with **all EXIF/GPS metadata stripped**, downscaled to 1600px → `photos/seam-ooze.jpg`, `photos/utility-closet.jpg`, `photos/wall-closeup.jpg`.
 - gh CLI still not authenticated — building everything locally, ready to push.
 
+### 13:50 — Report page built and committed locally
+- Wrote `index.html`: self-contained report (no external dependencies) — hero + key insight, 4 case facts, 3 photos with evidence captions, local hydrology stat tiles (4.30" storm / 5.6× river spike / 2.5× still-elevated / 66°F dew point), likelihood bar chart, 5 ranked-cause cards with evidence for/against, SVG cross-section diagram of the dry-pit mechanism, 8-step diagnostic test sequence, 3-tier fix plan, flooring verdict (incl. installer ASTM F710 angle + insurance), curated sources, method disclosure + disclaimer. Light + dark mode.
+- Chart colors validated with the dataviz palette validator: ALL CHECKS PASS in both light and dark modes.
+- Wrote `README.md`. Initialized git repo on `main`, committed everything.
+- No street address anywhere in the published content; photos re-encoded with EXIF/GPS stripped.
+
 ### Pending
-- [ ] `gh auth login` (user action) — needed to create the public repo + GitHub Pages.
-- [ ] Build HTML report page (self-contained, no street address).
-- [ ] Create public GitHub repo, push, enable Pages, verify live URL.
+- [ ] `gh auth login` (user action) — STILL NOT DONE; blocks publishing.
+- [ ] Create public GitHub repo `basement-water-investigation`, push, enable Pages, verify live URL.
