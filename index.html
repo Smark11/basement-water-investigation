@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Basement Water Investigation — Weatogue, CT</title>
+<meta name="description" content="Why water is coming up through a glued-down basement floor while the sump pit stays dry — a multi-agent research investigation with a ranked diagnosis, test plan, and fix plan.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💧</text></svg>">
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7;
+    --surface: #fcfcfb;
+    --ink: #0b0b0b;
+    --ink-2: #52514e;
+    --muted: #898781;
+    --grid: #e1e0d9;
+    --baseline: #c3c2b7;
+    --border: rgba(11,11,11,0.10);
+    --blue: #2a78d6;
+    --blue-deep: #1c5cab;
+    --blue-100: #cde2fb;
+    --blue-250: #86b6ef;
+    --ochre: #b45f1d;
+    --ochre-soft: #eb6834;
+    --good: #0ca30c;
+    --critical: #d03b3b;
+    --water: #9ec5f4;
+    --soil: #efe9df;
+    --soil-2: #e3d9c8;
+    --concrete: #dcdbd4;
+    --concrete-2: #c9c8bf;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --page: #0d0d0d;
+      --surface: #1a1a19;
+      --ink: #ffffff;
+      --ink-2: #c3c2b7;
+      --muted: #898781;
+      --grid: #2c2c2a;
+      --baseline: #383835;
+      --border: rgba(255,255,255,0.10);
+      --blue: #3987e5;
+      --blue-deep: #6da7ec;
+      --blue-100: #104281;
+      --blue-250: #1c5cab;
+      --ochre: #d98a45;
+      --ochre-soft: #d95926;
+      --good: #0ca30c;
+      --critical: #e66767;
+      --water: #256abf;
+      --soil: #26221c;
+      --soil-2: #332d24;
+      --concrete: #33332f;
+      --concrete-2: #44443f;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font: 16px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px 80px; }
+  header.hero {
+    padding: 64px 0 40px;
+    border-bottom: 1px solid var(--grid);
+    margin-bottom: 40px;
+  }
+  .kicker {
+    font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--blue); font-weight: 650; margin-bottom: 14px;
+  }
+  h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.12; letter-spacing: -0.02em; font-weight: 750; }
+  .sub { margin-top: 16px; font-size: 18px; color: var(--ink-2); max-width: 46em; }
+  .byline { margin-top: 18px; font-size: 13.5px; color: var(--muted); }
+  h2 { font-size: 26px; letter-spacing: -0.015em; margin: 56px 0 6px; scroll-margin-top: 24px; }
+  h2 .no { color: var(--muted); font-weight: 500; margin-right: 8px; }
+  .lede { color: var(--ink-2); margin-bottom: 22px; max-width: 52em; }
+  h3 { font-size: 17px; margin: 26px 0 8px; }
+  p + p { margin-top: 12px; }
+  a { color: var(--blue-deep); }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+  }
+  .insight {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--blue);
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin: 28px 0 0;
+    font-size: 17px;
+  }
+  .insight strong { color: var(--blue-deep); }
+
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin: 22px 0; }
+  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px 16px; }
+  .tile .v { font-size: 32px; font-weight: 720; letter-spacing: -0.02em; line-height: 1.1; }
+  .tile .v small { font-size: 17px; font-weight: 600; color: var(--ink-2); }
+  .tile .l { margin-top: 6px; font-size: 13.5px; color: var(--ink-2); line-height: 1.45; }
+
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 22px 0; }
+  .fact { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; font-size: 14.5px; color: var(--ink-2); }
+  .fact b { color: var(--ink); display: block; margin-bottom: 4px; font-size: 15px; }
+
+  .photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 22px 0; }
+  .photo { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .photo img { width: 100%; max-width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
+  .photo figcaption { padding: 13px 16px 15px; font-size: 13.5px; color: var(--ink-2); line-height: 1.5; }
+  .photo figcaption b { color: var(--ink); }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border-radius: 20px; margin-bottom: 6px; }
+  .tag.key { background: color-mix(in srgb, var(--ochre-soft) 16%, transparent); color: var(--ochre); }
+  .tag.ctx { background: color-mix(in srgb, var(--blue) 14%, transparent); color: var(--blue-deep); }
+
+  /* likelihood chart */
+  .chart { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px 14px; margin: 22px 0; }
+  .chart .ct { font-size: 15px; font-weight: 650; }
+  .chart .cs { font-size: 13px; color: var(--muted); margin: 2px 0 18px; }
+  .brow { display: grid; grid-template-columns: minmax(150px, 240px) 1fr 52px; gap: 12px; align-items: center; padding: 7px 0; }
+  .brow .bl { font-size: 13.5px; color: var(--ink-2); line-height: 1.3; text-align: right; }
+  .brow .bl b { color: var(--ink); font-weight: 600; }
+  .btrack { background: color-mix(in srgb, var(--grid) 55%, transparent); border-radius: 4px; height: 22px; position: relative; }
+  .bfill { position: absolute; inset: 0 auto 0 0; background: var(--blue); border-radius: 3px 4px 4px 3px; }
+  .bfill.chronic { background: var(--blue-250); }
+  .bv { font-size: 13.5px; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+  .cnote { font-size: 12.5px; color: var(--muted); margin: 12px 0 6px; }
+  @media (max-width: 560px) {
+    .brow { grid-template-columns: 1fr 60px; }
+    .brow .bl { grid-column: 1 / -1; text-align: left; padding-top: 6px; }
+  }
+
+  /* cause cards */
+  .cause { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; margin: 16px 0; }
+  .cause .chead { display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; }
+  .cause .rank { font-size: 13px; font-weight: 750; color: var(--blue-deep); white-space: nowrap; letter-spacing: .04em; }
+  .cause .rank.warn { color: var(--ochre); }
+  .cause h3 { margin: 6px 0 10px; font-size: 17.5px; line-height: 1.4; }
+  .cause .why { font-size: 14.5px; color: var(--ink-2); }
+  .ev { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  @media (max-width: 640px) { .ev { grid-template-columns: 1fr; } }
+  .ev div { font-size: 13.5px; line-height: 1.55; padding: 12px 14px; border-radius: 9px; background: color-mix(in srgb, var(--grid) 40%, transparent); color: var(--ink-2); }
+  .ev b { display: block; font-size: 12px; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 5px; }
+  .ev .for b { color: var(--good); }
+  .ev .against b { color: var(--critical); }
+
+  /* diagram */
+  .diagram-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin: 22px 0; overflow-x: auto; }
+  .diagram-box svg { min-width: 700px; width: 100%; height: auto; display: block; }
+  .diagram-box .cap { font-size: 13px; color: var(--muted); padding: 10px 6px 2px; min-width: 0; }
+  svg text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+
+  /* tests table */
+  .tests { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin: 22px 0; background: var(--surface); }
+  .test { display: grid; grid-template-columns: 46px 1fr; gap: 0 16px; padding: 18px 20px; border-top: 1px solid var(--grid); }
+  .test:first-child { border-top: 0; }
+  .test .n { width: 30px; height: 30px; border-radius: 50%; background: var(--blue); color: #fff; font-weight: 700; font-size: 14.5px; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .test h3 { margin: 2px 0 6px; font-size: 15.5px; }
+  .test p { font-size: 14px; color: var(--ink-2); }
+  .test .tells { margin-top: 8px; font-size: 13.5px; padding: 10px 13px; border-radius: 8px; background: color-mix(in srgb, var(--blue) 8%, transparent); }
+  .test .tells b { color: var(--blue-deep); }
+  .test .cost { margin-top: 8px; font-size: 12.5px; font-weight: 650; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+  /* tiers */
+  .tier { border: 1px solid var(--border); border-radius: 12px; background: var(--surface); margin: 18px 0; overflow: hidden; }
+  .tier > header { padding: 16px 22px; border-bottom: 1px solid var(--grid); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+  .tier > header h3 { margin: 0; font-size: 16.5px; }
+  .tier > header .tf { font-size: 13px; color: var(--muted); font-weight: 600; }
+  .action { padding: 16px 22px; border-top: 1px solid var(--grid); }
+  .action:first-of-type { border-top: 0; }
+  .action .ah { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+  .action .ah b { font-size: 15px; }
+  .action .ah .diy { font-size: 11px; font-weight: 750; letter-spacing: .07em; padding: 2px 8px; border-radius: 20px; background: color-mix(in srgb, var(--good) 14%, transparent); color: var(--good); }
+  .action p { font-size: 14px; color: var(--ink-2); margin-top: 5px; }
+  .action .ac { margin-top: 6px; font-size: 13px; font-weight: 650; color: var(--blue-deep); }
+
+  .verdict { border-left: 4px solid var(--ochre-soft); }
+  .verdict h3 { margin-top: 0; }
+  .verdict p { font-size: 14.5px; color: var(--ink-2); }
+  .verdict p b { color: var(--ink); }
+
+  .srcs { columns: 2; column-gap: 32px; font-size: 13.5px; margin-top: 14px; }
+  @media (max-width: 640px) { .srcs { columns: 1; } }
+  .srcs li { margin-bottom: 7px; break-inside: avoid; color: var(--ink-2); }
+  .src-group { margin-top: 18px; }
+  .src-group h3 { font-size: 14px; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
+
+  footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--grid); font-size: 13.5px; color: var(--muted); }
+  footer p + p { margin-top: 8px; }
+  .toc { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 20px; font-size: 14px; }
+  .toc a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--grid); }
+  .toc a:hover { color: var(--blue-deep); border-color: var(--blue-deep); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="kicker">Investigation · August 1, 2026 · Weatogue (Simsbury), Connecticut</div>
+  <h1>Water is coming up through the basement floor — and the sump pit is dry. Why?</h1>
+  <p class="sub">A finished basement in the Farmington River valley. A sump pump that ran constantly all spring without a drop of flooding. And now, in midsummer, rust-orange water oozing up between the seams of brand-new glued-down flooring while the pit sits quiet. Six research agents investigated. Here's the answer — and the plan.</p>
+  <p class="byline">Compiled by a multi-agent Claude research team · 63 web lookups · 131 sources · photographic evidence reviewed</p>
+  <nav class="toc">
+    <a href="#observed">What we observed</a>
+    <a href="#context">The local picture</a>
+    <a href="#causes">Ranked causes</a>
+    <a href="#mechanism">The mechanism</a>
+    <a href="#tests">Diagnostic tests</a>
+    <a href="#plan">The fix plan</a>
+    <a href="#flooring">The flooring verdict</a>
+    <a href="#sources">Sources</a>
+  </nav>
+</header>
+
+<section class="insight">
+  <strong>The key insight:</strong> a "relatively dry" sump pit does not mean the ground under the slab is dry — it only means water isn't reaching the pit's float level. There is a 20+ inch vertical window between the slab underside and a typical pit intake where water can sit and press upward. And given that the Farmington River was still running at <strong>2.5× its baseline flow on August 1</strong> — proof the valley water table is still elevated — a properly connected pit <em>should not be dry right now</em>. The dry pit isn't reassuring. The dry pit is the clue: water is almost certainly being <em>blocked from reaching it</em>, and is exiting instead through the weakest point in the slab — the patched ring around the sump basin itself. The glued-down flooring then acts as a vapor-tight lid, turning what would once have been harmless slab dampness into visible pooled water squeezing out at the seams.
+</section>
+
+<h2 id="observed">What we observed</h2>
+<p class="lede">Four case facts, and three photographs. Any explanation has to account for all of them at once.</p>
+
+<div class="facts">
+  <div class="fact"><b>The pit is quiet, the floor is wet</b>Sump pit "relatively dry" in August — yet liquid water squeezes up at plank seams under foot pressure. That means free water is pooled between the slab and the glued flooring right now.</div>
+  <div class="fact"><b>The wet zone is anchored at the sump corner</b>Water appears from the sump pump outward to about 25% of the way across the room — not room-wide, not along the far walls. It radiates from exactly where the slab was cut and patched to install the basin.</div>
+  <div class="fact"><b>Rain makes it worse, days later</b>Not obviously rain-dependent day to day, but noticeably worse after a major late-July storm. That 1–3 day lag is the signature of groundwater moving through soil, not of a roof leak or a burst pipe.</div>
+  <div class="fact"><b>The system used to work</b>The sump was installed a few years ago and solved the original problem. Spring 2026: constant pumping through heavy rains, zero flooding. The failure is new — something changed.</div>
+</div>
+
+<div class="photos">
+  <figure class="photo">
+    <img src="photos/seam-ooze.jpg" alt="Light oak-look plank flooring with rust-orange fluid oozing from the seams between planks" loading="lazy">
+    <figcaption><span class="tag key">Key evidence</span><br><b>The ooze is orange, not clear.</b> Rust-brown fluid at the plank seams is the visual signature of <b>iron ochre</b> — iron-bacteria residue common in Connecticut groundwater. Condensation, supply-line leaks, and AC condensate all run clear. This points squarely at groundwater — and iron ochre is notorious for clogging the very drain tile that feeds a sump pit.</figcaption>
+  </figure>
+  <figure class="photo">
+    <img src="photos/utility-closet.jpg" alt="Utility closet with dehumidifier, sump pump, copper pipes, and concrete floor showing white mineral staining" loading="lazy">
+    <figcaption><span class="tag ctx">Supporting</span><br><b>Efflorescence at the sump/utility area.</b> The white crusty mineral deposits and damp staining on the exposed slab are salts left behind by water migrating up through the concrete — evidence of chronic moisture movement in exactly the zone where the flooring is failing.</figcaption>
+  </figure>
+  <figure class="photo">
+    <img src="photos/wall-closeup.jpg" alt="Blurry close-up of textured white parged wall surface" loading="lazy">
+    <figcaption><span class="tag ctx">Reviewed</span><br><b>Wall close-up.</b> Textured parged surface with minor staining at lower left; too blurry to be independently diagnostic, consistent with the moisture picture above.</figcaption>
+  </figure>
+</div>
+
+<h2 id="context">The local picture: this is not ordinary August</h2>
+<p class="lede">Weatogue sits on the Farmington River floodplain over roughly 90 feet of transmissive glacial outwash sand and gravel — a naturally shallow, fast-responding water table hydraulically tied to the river, in a documented chronic basement-water zone. Then July 2026 happened: four separate multi-inch rain events, capped by a major storm days before the water appeared.</p>
+
+<div class="tiles">
+  <div class="tile"><div class="v">4.30<small>&nbsp;in</small></div><div class="l">Rain at Bradley Airport July 28–29 alone, with flash-flood warnings across Hartford County — plus 2–3&Prime; more in the up-valley hills July 31</div></div>
+  <div class="tile"><div class="v">5.6×</div><div class="l">Farmington River flow spike at the USGS Tariffville gauge (just downstream): ~250 → 1,410 cfs at the July 29–30 peak</div></div>
+  <div class="tile"><div class="v">2.5×</div><div class="l">Still-elevated river flow at midday Aug 1 (~640 cfs) — direct evidence the valley water table under Weatogue homes remains above normal and is still draining</div></div>
+  <div class="tile"><div class="v">66°F</div><div class="l">Dew point on Aug 1 (~80% humidity). A basement slab cannot dry by ventilation in this air — opening windows <em>adds</em> water. Mechanical dehumidification is mandatory</div></div>
+</div>
+
+<p>Two timing facts matter. First, summer water tables normally <em>fall</em> — evapotranspiration eats summer rain — so a groundwater surge in August is unusual and points squarely at the July storms rather than a lingering wet spring. Second, sub-slab water appearing 1–3 days after peak rainfall is exactly what the river's recession curve predicts for a house on this aquifer: the water arrives late, and it leaves slowly.</p>
+
+<h2 id="causes">The verdict: five candidate causes, ranked</h2>
+<p class="lede">The research team evaluated every mechanism that can put liquid water under a glued floor while a sump pit stays dry, then a lead investigator adversarially weighed them against the four case facts. Percentages are the estimated chance each mechanism is a <em>meaningful contributor</em> (they overlap — the top two likely operate together). Notably, the team ranked iron-ochre fouling #1 <em>before</em> reviewing the photos; the orange seam-ooze photo independently corroborates it.</p>
+
+<div class="chart" role="img" aria-label="Horizontal bar chart of likelihood that each cause is a meaningful contributor: clogged or ochre-fouled drain tile 65%, elevated water table in the float window 45%, capillary and vapor drive as a chronic contributor 35%, discharge line recirculation 25%, plumbing or AC condensate leak 10%.">
+  <div class="ct">Likelihood each mechanism is meaningfully contributing</div>
+  <div class="cs">Estimated by adversarial synthesis across all evidence · not mutually exclusive</div>
+  <div class="brow"><div class="bl"><b>Clogged / ochre-fouled drain tile</b><br>collection failure at the pit</div><div class="btrack"><div class="bfill" style="width:65%"></div></div><div class="bv">65%</div></div>
+  <div class="brow"><div class="bl"><b>Elevated water table</b><br>sitting in the float window</div><div class="btrack"><div class="bfill" style="width:45%"></div></div><div class="bv">45%</div></div>
+  <div class="brow"><div class="bl"><b>Capillary + vapor drive</b><br>chronic, not the acute source</div><div class="btrack"><div class="bfill chronic" style="width:35%"></div></div><div class="bv">35%</div></div>
+  <div class="brow"><div class="bl"><b>Discharge-line recirculation</b><br>amplifier at the sump corner</div><div class="btrack"><div class="bfill" style="width:25%"></div></div><div class="bv">25%</div></div>
+  <div class="brow"><div class="bl"><b>Plumbing / AC condensate leak</b><br>test first, cheap to rule out</div><div class="btrack"><div class="bfill" style="width:10%"></div></div><div class="bv">10%</div></div>
+  <div class="cnote">Lighter bar = chronic background condition rather than the acute event. Dark-bar causes are ordered by the synthesis ranking.</div>
+</div>
+
+<div class="cause">
+  <div class="chead"><span class="rank">#1 · VERY LIKELY — PRIMARY ROOT CAUSE · 65%</span></div>
+  <h3>Clogged, silted, or iron-ochre-fouled drain tile — water can't reach the pit, so it exits up through the slab around it</h3>
+  <p class="why">The sump pit only sees the water its collection system delivers. If the perimeter drain tile, gravel bed, or pit inlets are fouled — and iron ochre, the orange bacterial slime visible in the seam photo, is Connecticut's classic fouling agent — groundwater perches inches under the slab while the pit reads dry. The water then exits at the weakest slab penetration: the cut-and-patch ring around the sump basin itself, which is exactly where the wet zone is anchored. This is the only single mechanism that explains all four case facts at once. The spring's constant-run season moved months of silt- and iron-laden Farmington Valley groundwater through the system at maximum flow — precisely the loading that accelerates ochre fouling, and "a few years old" is the classic timeframe for it to bite.</p>
+  <div class="ev">
+    <div class="for"><b>Evidence for</b>Dry-pit/wet-floor paradox directly explained · wet zone anchored at the sump patch ring · orange ochre-colored ooze in the photos · iron-rich alluvial valley soils are prime ochre territory · river still 2.5× baseline means water <em>is</em> arriving under the slab, so a connected pit shouldn't be dry</div>
+    <div class="against"><b>Evidence against</b>Not yet confirmed by direct observation — no one has opened the pit to look for orange slime at the inlets, or drilled a test hole to compare perched-water level against pit level. Tests 1 and 5 below settle it.</div>
+  </div>
+</div>
+
+<div class="cause">
+  <div class="chead"><span class="rank">#2 · LIKELY CO-DRIVER · 45%</span></div>
+  <h3>An elevated water table sitting in the blind window between the slab underside and the pump's float trigger</h3>
+  <p class="why">A slab bottoms out about 4 inches down; a typical pit float doesn't trigger until water is 18–24 inches down. Water can stand anywhere in that window — wetting the slab from below, feeding hydrostatic pressure through cracks — while the pit level "looks fine" to the eye. The capillary fringe in fine alluvial silt adds another foot of effective wetting above the free water surface. With USGS gauge data proving the valley system was still elevated on August 1, this is likely operating alongside cause #1: the water is high <em>and</em> the tile isn't intercepting it.</p>
+  <div class="ev">
+    <div class="for"><b>Evidence for</b>Gauge-verified elevated groundwater on the observation date · exceptionally wet July · shallow fast-responding aquifer · nobody has actually measured pit water depth with a tape — "relatively dry" is an eyeball reading</div>
+    <div class="against"><b>Evidence against</b>If the water table were at slab level and the pit were properly connected, the deeper pit should fill and cycle first. Alone, this predicts a wetter, more perimeter-wide pattern — not one quadrant. Which points back at #1.</div>
+  </div>
+</div>
+
+<div class="cause">
+  <div class="chead"><span class="rank">#3 · POSSIBLE AMPLIFIER — RULE OUT CHEAPLY · 25%</span></div>
+  <h3>Sump discharge failure recirculating pumped water into the soil at exactly that corner</h3>
+  <p class="why">Geometrically the best match of all: the discharge line exits at the sump corner, and a broken buried line, a termination too close to the foundation, or a failed check valve injects every pumped gallon right back into the soil beside the footing where the wet zone starts. During spring's constant running, even a partial leak moved thousands of gallons into that pocket. The pump cycles rarely now, so this fits better as what <em>pre-saturated</em> the corner than as the sole ongoing source — but it's a free 15-minute test and must be checked before any expensive drain work.</p>
+  <div class="ev">
+    <div class="for"><b>Evidence for</b>Wet zone centered on the discharge corner · constant spring running is a hallmark of re-pumping the same water · Connecticut winters freeze-damage buried discharge lines · over half of sump-related failures trace to discharge problems</div>
+    <div class="against"><b>Evidence against</b>Low current pump duty caps how much water it can deliver today · recirculated water beside a healthy pit should partly re-enter the pit · symptom worsened with rain, which recirculation alone doesn't require</div>
+  </div>
+</div>
+
+<div class="cause">
+  <div class="chead"><span class="rank">#4 · UNLIKELY — BUT TEST FIRST, TESTS ARE FREE · 10%</span></div>
+  <h3>Plumbing supply leak, drain leak, or AC condensate line failure under or near the slab</h3>
+  <p class="why">The rain correlation is the disqualifier — pressurized supply leaks and condensate lines don't respond to storms. But it stays on the list because it's August, the AC is running hard in 66°F-dew-point air (5–20+ gallons of condensate a day is possible), condensate lines are often routed toward the sump pit — through the wet corner — and a supply leak is the one candidate that gets more expensive every week it's ignored. A water-meter dial test and a $2 dye tablet settle it.</p>
+  <div class="ev">
+    <div class="for"><b>Evidence for</b>Localization compatible <em>if</em> a condensate or supply line crosses that corner · dry pit fully compatible · heavy AC duty right now</div>
+    <div class="against"><b>Evidence against</b>Symptom tracks rain events · ooze is orange/silty, not clear · supply leaks run 24/7 weather-independent, which doesn't match "got worse after it rained"</div>
+  </div>
+</div>
+
+<div class="cause">
+  <div class="chead"><span class="rank warn">#5 · CHRONIC BACKGROUND — NOT THE ACUTE CAUSE, BUT WHY IT SHOWS · 35%</span></div>
+  <h3>Capillary rise and vapor drive through the slab, trapped by a vapor-tight glued floor</h3>
+  <p class="why">Honest physics: even extreme vapor emission (~10 lb/1,000 sq ft/day) is roughly half a liter per day over the wet zone — enough to destroy adhesive and feed mold over months, but an order of magnitude short of squeegee-able pooled water appearing days after a storm. This mechanism is not the acute source. It is, however, why the failure is so <em>visible</em>: the glued flooring is an impermeable lid that converts moisture which would once have harmlessly evaporated into liquid accumulating at the bond line — and it guarantees the same failure repeats with any glue-down replacement. It also rules out one folk theory: humid August room air is <em>not</em> the source, because there is no air gap under glued flooring for room air to condense in.</p>
+  <div class="ev">
+    <div class="for"><b>Evidence for</b>Likely no under-slab vapor barrier · below-grade slab in a known high-groundwater valley · adhesive re-emulsification is exactly what sustained wet, alkaline exposure produces</div>
+    <div class="against"><b>Evidence against (as the acute cause)</b>Magnitude too small by 10× · wrong timescale (days, not months) · wrong geometry (should be room-wide, not one quadrant) · wrong rain response</div>
+  </div>
+</div>
+
+<h2 id="mechanism">The mechanism, in one picture</h2>
+<p class="lede">A cross-section of what the evidence says is happening under the floor. Water arrives from the still-elevated valley water table, can't get into the pit because the collection path is fouled, perches against the slab underside, and exits through the patched ring around the basin — straight into the one place it can't evaporate: under a glued, vapor-tight floor.</p>
+
+<div class="diagram-box">
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" aria-label="Cross-section diagram of basement slab, sump pit, clogged drain tile, and elevated water table">
+  <!-- soil -->
+  <rect x="0" y="150" width="900" height="410" fill="var(--soil)"/>
+  <!-- saturated soil below water table -->
+  <rect x="0" y="315" width="900" height="245" fill="var(--soil-2)"/>
+  <!-- water table dashed line -->
+  <line x1="0" y1="315" x2="900" y2="315" stroke="var(--blue)" stroke-width="2.5" stroke-dasharray="10 7"/>
+  <text x="16" y="337" font-size="13.5" font-weight="650" fill="var(--blue-deep)">Water table — still elevated Aug 1 (river at 2.5× baseline)</text>
+  <text x="16" y="355" font-size="12" fill="var(--ink-2)">sits ABOVE the pit's float trigger level, in the "blind window"</text>
+
+  <!-- foundation wall -->
+  <rect x="60" y="60" width="46" height="330" fill="var(--concrete-2)"/>
+  <rect x="40" y="380" width="86" height="34" fill="var(--concrete-2)"/>
+  <text x="83" y="130" font-size="12.5" fill="var(--ink-2)" transform="rotate(-90 83 130)" text-anchor="end">Foundation wall</text>
+
+  <!-- interior air -->
+  <rect x="106" y="60" width="794" height="220" fill="var(--surface)"/>
+
+  <!-- slab -->
+  <rect x="106" y="280" width="794" height="34" fill="var(--concrete)"/>
+  <!-- flooring layer -->
+  <rect x="106" y="270" width="794" height="10" fill="var(--ochre-soft)" opacity="0.85"/>
+  <text x="880" y="262" font-size="13" font-weight="650" fill="var(--ochre)" text-anchor="end">Glued laminate — a vapor-tight lid</text>
+  <text x="880" y="300" font-size="12.5" fill="var(--ink-2)" text-anchor="end">4&Prime; concrete slab</text>
+
+  <!-- perched water film under slab -->
+  <rect x="106" y="314" width="794" height="10" fill="var(--water)" opacity="0.9"/>
+  <text x="620" y="341" font-size="12.5" font-weight="600" fill="var(--blue-deep)">Perched water pressed against the slab underside</text>
+
+  <!-- sump pit -->
+  <rect x="200" y="314" width="130" height="150" fill="var(--surface)" stroke="var(--baseline)" stroke-width="2"/>
+  <!-- pit water (low) -->
+  <rect x="202" y="440" width="126" height="22" fill="var(--water)"/>
+  <!-- pump -->
+  <rect x="240" y="408" width="48" height="54" rx="6" fill="var(--concrete-2)" stroke="var(--baseline)"/>
+  <circle cx="300" cy="430" r="8" fill="var(--surface)" stroke="var(--baseline)" stroke-width="2"/>
+  <text x="265" y="490" font-size="13" font-weight="650" fill="var(--ink)" text-anchor="middle">Sump pit "relatively dry"</text>
+  <text x="265" y="507" font-size="12" fill="var(--ink-2)" text-anchor="middle">water never reaches the float — the</text>
+  <text x="265" y="522" font-size="12" fill="var(--ink-2)" text-anchor="middle">pump has no reason to run</text>
+  <!-- float trigger level -->
+  <line x1="204" y1="420" x2="326" y2="420" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="334" y="424" font-size="11.5" fill="var(--muted)">float trigger level</text>
+
+  <!-- drain tile clogged -->
+  <circle cx="150" cy="400" r="16" fill="var(--soil)" stroke="var(--baseline)" stroke-width="2"/>
+  <path d="M140 390 L160 410 M160 390 L140 410" stroke="var(--ochre-soft)" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="410" cy="400" r="16" fill="var(--soil)" stroke="var(--baseline)" stroke-width="2"/>
+  <path d="M400 390 L420 410 M420 390 L400 410" stroke="var(--ochre-soft)" stroke-width="4" stroke-linecap="round"/>
+  <text x="150" y="440" font-size="12.5" font-weight="650" fill="var(--ochre)" text-anchor="start" transform="translate(-95,0)">Drain tile fouled with</text>
+  <text x="150" y="456" font-size="12.5" font-weight="650" fill="var(--ochre)" text-anchor="start" transform="translate(-95,0)">iron ochre / silt —</text>
+  <text x="150" y="472" font-size="12.5" fill="var(--ink-2)" text-anchor="start" transform="translate(-95,0)">water can't reach the pit</text>
+
+  <!-- patch ring arrows: water escaping up around pit -->
+  <g stroke="var(--blue)" stroke-width="3.5" fill="none" stroke-linecap="round">
+    <path d="M345 320 L345 282"/>
+    <path d="M188 320 L188 282"/>
+    <path d="M460 322 L460 290"/>
+    <path d="M540 322 L540 292"/>
+  </g>
+  <g fill="var(--blue)">
+    <path d="M345 276 l-6 11 h12 z"/>
+    <path d="M188 276 l-6 11 h12 z"/>
+    <path d="M460 284 l-6 11 h12 z"/>
+    <path d="M540 286 l-6 11 h12 z"/>
+  </g>
+  <text x="345" y="252" font-size="13" font-weight="650" fill="var(--blue-deep)" text-anchor="middle">Water exits through the patched ring</text>
+  <text x="345" y="268" font-size="12" fill="var(--ink-2)" text-anchor="middle">around the basin + nearby cracks — the weakest slab paths</text>
+
+  <!-- ooze at seams -->
+  <g fill="var(--ochre-soft)">
+    <ellipse cx="430" cy="268" rx="14" ry="4"/>
+    <ellipse cx="520" cy="268" rx="18" ry="4"/>
+    <ellipse cx="360" cy="268" rx="10" ry="4"/>
+  </g>
+  <text x="452" y="230" font-size="13" font-weight="650" fill="var(--ochre)" text-anchor="start">Orange ochre-tinted water oozes at plank seams</text>
+  <text x="452" y="246" font-size="12" fill="var(--ink-2)" text-anchor="start">(what the photos show)</text>
+
+  <!-- wet zone bracket -->
+  <path d="M188 100 L188 88 L560 88 L560 100" stroke="var(--ink-2)" stroke-width="1.5" fill="none"/>
+  <text x="374" y="78" font-size="13" font-weight="650" fill="var(--ink)" text-anchor="middle">Observed wet zone: sump corner → ~25% across the room</text>
+
+  <!-- discharge line -->
+  <path d="M300 430 L300 160 L84 160" stroke="var(--baseline)" stroke-width="6" fill="none"/>
+  <text x="310" y="170" font-size="11.5" fill="var(--muted)">discharge line (verify it actually carries water 10+ ft away — test 3)</text>
+</svg>
+<div class="cap">Schematic cross-section, not to scale. The "blind window": water standing between the slab underside (~4&Prime; down) and the float trigger (~18–24&Prime; down) wets the floor while the pit looks dry. If the tile is fouled, even high water never registers in the pit at all.</div>
+</div>
+
+<h2 id="tests">Prove it before you spend: eight tests in order</h2>
+<p class="lede">Under $50 and one weekend of mostly-passive testing discriminates among all five causes before any contractor money is spent. Do them in this order — each one either redirects or de-risks the next.</p>
+
+<div class="tests">
+  <div class="test"><div class="n">1</div><div>
+    <h3>Open the sump pit: measure, inspect for ochre, find the inlets</h3>
+    <p>Unplug the pump. Measure standing water depth with a tape — don't eyeball it. Look for orange-brown gelatinous slime on the pump, float, basin walls, and especially at inlet pipe openings. Note whether perforated drain-tile inlets actually enter the basin, and the float trigger height. Photograph everything.</p>
+    <div class="tells"><b>What it tells you:</b> Ochre slime → cause #1 confirmed track. Water standing high under a high float → the "dry pit" is an illusion and a $0–300 float adjustment may be most of the fix. No inlet pipes at all → pit-only install; the system never had real collection.</div>
+    <div class="cost">$0 · 15 minutes</div>
+  </div></div>
+  <div class="test"><div class="n">2</div><div>
+    <h3>Water-meter dial test</h3>
+    <p>Turn off every fixture and appliance, photograph the meter's low-flow indicator, wait 1–2 hours, re-check. If it moved, close the main house valve and repeat to separate house-side from street-side.</p>
+    <div class="tells"><b>What it tells you:</b> Any movement → pressurized supply leak and the whole ranking reshuffles. No movement → supply leak eliminated, free, before any waterproofing spend.</div>
+    <div class="cost">$0 · 10 minutes + wait</div>
+  </div></div>
+  <div class="test"><div class="n">3</div><div>
+    <h3>Bucket test + outdoor discharge check + check-valve listen + pit dye</h3>
+    <p>Pour two or three 5-gallon buckets into the pit to force pump cycles while a second person outside confirms full, steady flow exits the discharge 10+ feet from the foundation. After shutoff, listen for trickle-back (failed check valve). Drop food dye in the pit before cycling; walk the discharge route looking for soggy soil or ochre staining near the sump corner.</p>
+    <div class="tells"><b>What it tells you:</b> Weak or missing outdoor flow → broken buried discharge line. Dyed water later under the floor → recirculation confirmed. Full clean discharge → cause #3 eliminated.</div>
+    <div class="cost">$2 · 30 minutes</div>
+  </div></div>
+  <div class="test"><div class="n">4</div><div>
+    <h3>AC condensate dye test</h3>
+    <p>Put food dye in the AC drain pan or condensate pump reservoir; watch 24–48 hours for dye under the floor or in the pit. Also inspect expressed floor water: clear and cool suggests supply/condensate; silty orange suggests groundwater.</p>
+    <div class="tells"><b>What it tells you:</b> Dye under the floor → condensate line failure in the wet corner. No dye → condensate eliminated.</div>
+    <div class="cost">$2 · passive, 1–2 days</div>
+  </div></div>
+  <div class="test"><div class="n">5</div><div>
+    <h3>Drill one ¼&Prime; test hole through the slab in the wet zone</h3>
+    <p>Masonry bit, through the slab. Watch whether water rises into the hole and stands; compare its level to the pit level from test 1. Foam-plug it afterward — it doubles as an observation port through the next rain.</p>
+    <div class="tells"><b>What it tells you:</b> Standing water ABOVE pit level → perched sub-slab water disconnected from the pit — near-proof of the clogged/bypassed tile diagnosis. Water at pit level → connected system, float/depth problem. Damp only → hydrostatic ruled out.</div>
+    <div class="cost">~$10 · 20 minutes</div>
+  </div></div>
+  <div class="test"><div class="n">6</div><div>
+    <h3>Pull 1–2 sacrificial planks at the wet edge</h3>
+    <p>The wet zone is already a loss (see verdict below), so this costs nothing you weren't losing. Observe water quantity, clarity, temperature; ochre staining on the slab; adhesive condition (re-emulsified goo vs. intact); any mold. Trapped water finally starts drying.</p>
+    <div class="tells"><b>What it tells you:</b> The single most informative act: orange silty water → groundwater/ochre; clear cool abundant water → supply/condensate. Volume and spread calibrate every other hypothesis.</div>
+    <div class="cost">$0 · 30 minutes</div>
+  </div></div>
+  <div class="test"><div class="n">7</div><div>
+    <h3>Taped plastic-sheet test + during-rain pit log</h3>
+    <p>Tape a 2×2 ft clear poly square airtight to bare slab; read at 24–72 hours. Condensation under the sheet = slab-sourced moisture; on top = interior air. During the next real rain, mark the pit level hourly while checking whether the floor wet zone grows.</p>
+    <div class="tells"><b>What it tells you:</b> Floor-worse-while-pit-stays-dry during active rain is the clincher for a clogged or never-connected tile loop. The sheet test maps the chronic baseline for the re-flooring decision.</div>
+    <div class="cost">~$5 · passive, days</div>
+  </div></div>
+  <div class="test"><div class="n">8</div><div>
+    <h3>Contractor camera scope + jet/flush of the drain tile</h3>
+    <p>Only after the free tests point at collection failure. Camera inspection through the pit's inlet stubs ($125–500) locates silt, ochre, breaks, or confirms absence of tile; hydro-jetting ($200–600) clears silt and fluid-stage ochre. Insist on a contractor with explicit iron-ochre experience.</p>
+    <div class="tells"><b>What it tells you:</b> Definitive confirmation — and often the repair in the same visit: restorable (jet/cleanout) vs. replace (hardened ochre → ochre-rated system).</div>
+    <div class="cost">$325–1,100</div>
+  </div></div>
+</div>
+
+<h2 id="plan">The fix plan: three tiers</h2>
+<p class="lede">Sequenced so every dollar is spent on a confirmed problem, not a guess. Fix the collection failure first — every dollar spent on flooring before the water path is fixed is spent twice.</p>
+
+<div class="tier">
+  <header><h3>Tier 1 — Stop the damage & run the free diagnostics</h3><span class="tf">This week</span></header>
+  <div class="action"><div class="ah"><b>Lift all flooring in the wet zone plus a 2-ft margin</b><span class="diy">DIY</span></div>
+    <p>The wet-zone flooring is already lost. Pull planks from the sump corner past the last wet seam plus 2 ft, verified with a cheap moisture meter. Scrape adhesive ridges so the slab can dry. <b>Photograph and date everything first</b> — for insurance documentation and any installer claim. Assume mold under planks wet more than a few days: wear a respirator, bag debris.</p>
+    <div class="ac">&lt;$100 DIY tools · $3–7/sq ft if hired out</div></div>
+  <div class="action"><div class="ah"><b>Dry the slab mechanically — do NOT open windows</b><span class="diy">DIY</span></div>
+    <p>50-pint ENERGY STAR dehumidifier (drain hose to the sump pit) set to 45–50% RH, plus a box fan across the slab, continuously. At a 66°F outdoor dew point, ventilating <em>adds</em> water to a cool slab. Mold germinates above 60% RH.</p>
+    <div class="ac">$150–310 dehumidifier + ~$50 fan</div></div>
+  <div class="action"><div class="ah"><b>Run diagnostic tests 1–7 in order</b><span class="diy">DIY</span></div>
+    <p>Pit inspection, meter dial test, bucket + discharge + dye, condensate dye, test hole, plastic sheet, rain-event pit log. One weekend, under $50, discriminates among all candidate causes before any contractor is called.</p>
+    <div class="ac">&lt;$50 total</div></div>
+  <div class="action"><div class="ah"><b>Exterior audit + cheap surface-water fixes</b><span class="diy">DIY</span></div>
+    <p>During the next rain: gutters overflowing? Downspouts dumping near the wet corner? Grade sloping toward the house? Downspout extensions are the cheapest possible fix in this entire plan.</p>
+    <div class="ac">$10–50 per extension</div></div>
+  <div class="action"><div class="ah"><b>Written request to the flooring installer for moisture-test records</b><span class="diy">DIY</span></div>
+    <p>Costs nothing, starts the clock. Ask for ASTM F2170 or F1869 test documentation for the below-grade slab prior to glue-down installation, and check the contract's site-condition language. See the flooring verdict for the strength and limits of this claim.</p>
+    <div class="ac">$0</div></div>
+</div>
+
+<div class="tier">
+  <header><h3>Tier 2 — Repair the water path, guided by the test results</h3><span class="tf">Next 2–4 weeks</span></header>
+  <div class="action"><div class="ah"><b>Camera scope + jet/flush the drain tile</b></div>
+    <p>The highest-value contractor spend if tests point at collection failure (the expected outcome). Hot-water flushing clears fluid-stage ochre; hardened ochre means tile replacement. Hire a waterproofing contractor with explicit iron-ochre experience — ochre recurs, and the rebuilt system should be maintenance-cleanable.</p>
+    <div class="ac">$325–1,100</div></div>
+  <div class="action"><div class="ah"><b>Adjust float / deepen pit / repair discharge as tests dictate</b></div>
+    <p>Float adjustment $0–300 (caveat: if ochre is confirmed, keeping the pump submerged suppresses the bacteria — don't aggressively lower the float without a plan). Deeper basin swap up to ~$1,000. Broken buried discharge: surface extension $10–50; buried replacement to daylight $2,200–3,300. Check valve ~$20–100.</p>
+    <div class="ac">$0–1,000 typical · up to $3,300 if buried discharge must be replaced</div></div>
+  <div class="action"><div class="ah"><b>Add a battery backup pump — regardless of diagnosis</b></div>
+    <p>Spring 2026 proved this pump runs constantly in heavy rain. A power outage during one of those storms floods the finished basement. Non-negotiable given the investment upstairs of the slab.</p>
+    <div class="ac">$600–1,200 installed</div></div>
+  <div class="action"><div class="ah"><b>Add a water-backup/sump-overflow rider to the homeowners policy</b><span class="diy">DIY</span></div>
+    <p>The <em>current</em> damage — groundwater seepage through the slab — is excluded from standard HO-3 policies and almost certainly not claimable; don't burn time on a claim likely to be denied. But the rider ($50–250/yr, $5k+ limits) covers the pump-failure scenario going forward. Keep the Tier-1 photo documentation either way.</p>
+    <div class="ac">$50–250/yr</div></div>
+</div>
+
+<div class="tier">
+  <header><h3>Tier 3 — Systemic fix & re-flooring</h3><span class="tf">1–3 months, after one verified heavy-rain cycle</span></header>
+  <div class="action"><div class="ah"><b>Interior French drain retrofit (ochre-rated), full or wet-side partial</b></div>
+    <p>Only if scoping shows an intact system genuinely overwhelmed by the water table, or a dead system needing replacement. Hartford-area pricing: $50–60 per linear foot — roughly $5,000–6,000 for a ~100 LF full perimeter, or $1,800–2,800 for a 30–40 LF wet-side partial run. Specify an ochre-rated system (WaterGuard IOS class) given the valley's iron chemistry.</p>
+    <div class="ac">$1,800–2,800 partial · $5,000–6,000 full perimeter</div></div>
+  <div class="action"><div class="ah"><b>Moisture-mitigation layer on the slab before ANY new floor</b></div>
+    <p>100%-RH-rated epoxy moisture-vapor-barrier primer, $1.50–3.50/sq ft. These are rated for <em>vapor</em>, not standing water — drainage must control liquid water first. Precondition for any new flooring: slab passes ASTM F2170 in-situ RH probes (&lt;75–80%) <em>after</em> water control is in, verified through one heavy rain. Numbers from a dry week are not the design condition.</p>
+    <div class="ac">$1.50–3.50/sq ft</div></div>
+  <div class="action"><div class="ah"><b>Re-floor with a water-tolerant, decoupled system — never glue-down again</b></div>
+    <p>Best fits: floating rigid-core SPC plank (from ~$3.75/sq ft material) over a dimple-mat subfloor (Delta-FL / DRIcore class, $2.50–9/sq ft installed) that lets incidental water drain toward the sump — or porcelain tile on uncoupling membrane ($6–16/sq ft) / sealed concrete ($3–12/sq ft) for maximum immunity in at least the sump-corner zone. <b>Never install on this slab:</b> glue-down anything, laminate, solid wood, or carpet.</p>
+    <div class="ac">$3.75–16/sq ft by system</div></div>
+</div>
+
+<h2 id="flooring">The flooring verdict — honest version</h2>
+<div class="card verdict">
+  <h3>The wet-zone flooring cannot be saved, and pretending otherwise costs more than accepting it now.</h3>
+  <p>Liquid water between slab and adhesive exceeds the moisture rating of every flooring adhesive made (limits run ~75–80% slab RH / 3–8 lb MVER — pooled water is effectively 100% RH plus hydrostatic wetting), and acrylic adhesives <b>re-emulsify into goo</b> under sustained wet, alkaline exposure. If the product is true laminate (HDF wood core), the core swelled irreversibly within hours of first wetting. If — more likely for a glue-down product — it's luxury vinyl plank, the vinyl itself shrugs off water but the planks are destroyed during removal from failed adhesive and can't be re-glued. Either way, the IICRC S500 water-damage standard requires lifting non-porous flooring after water intrusion because the slab cannot dry in place.</p>
+  <p><b>Assume mold.</b> The 24–48-hour colonization window is long past — this water has plausibly been present since spring. That converts the job from "flooring repair" to "water-damage remediation": tear out the wet zone plus a 2-ft moisture-meter-verified margin, scrape all adhesive, clean and treat the slab, dry with instruments verifying, and check adjacent baseboards and drywall bottom plates. Dry-zone flooring beyond the margin can stay for now — but it is living on borrowed time over an unmitigated below-grade slab.</p>
+  <p><b>On the installer:</b> ASTM F710 requires moisture testing of ALL concrete slabs before resilient flooring; below-grade slabs are flagged highest-risk in every industry guideline; and this house had a visible sump pump — a known water history. If the installer glued down flooring with no documented F2170/F1869 testing, that deviates from the ASTM-referenced standard and near-universal manufacturer instructions, and voids the product warranty — a real workmanship claim. Honest caveats: F710 doesn't assign <em>who</em> performs the test, so the installer may argue the owner/GC owned it, and the underlying water condition belongs to the house, not the installer. Realistic outcome of a written demand for their test records (with Connecticut Home Improvement Act leverage and the Guaranty Fund if they're registered): <b>a negotiated contribution toward re-flooring — not full remediation costs.</b> Send the letter; it's free. Don't budget around it.</p>
+</div>
+
+<h2 id="sources">Sources & method</h2>
+<p class="lede">Five research agents ran 63 web lookups in parallel (local hydrology · differential diagnosis · sump systems · flooring forensics · remediation & costs), then a lead investigator adversarially synthesized their findings against the case facts. Selected key sources below; full source list in the repository.</p>
+
+<div class="src-group"><h3>Local weather & hydrology</h3><ul class="srcs">
+  <li>USGS instantaneous flow data, Farmington River at Tariffville gauge 01189995 (waterservices.usgs.gov)</li>
+  <li>USGS Water-Resources Inventory of Connecticut, Part 9: Farmington River Basin</li>
+  <li>USGS WRI 83-4145 &amp; 89-4140: stratified-drift aquifers near Simsbury / availability of water, Farmington basin</li>
+  <li>WFSB First Alert technical discussions, July 27–29, 2026 (heavy rain / flood threat, Hartford County)</li>
+  <li>NWS/media flash-flood warning coverage, Hartford County, July 29–30, 2026</li>
+</ul></div>
+<div class="src-group"><h3>Iron ochre & drain-tile failure</h3><ul class="srcs">
+  <li>Michigan State University Extension: Iron ochre clogging in drainage systems ("keep iron ochre under control in your basement")</li>
+  <li>U.S. Waterproofing: How iron bacteria can clog basement waterproofing systems</li>
+  <li>Basement Defender: Iron ochre in my sump pit</li>
+  <li>The Real Seal: Interior/exterior drain tile guides; hydrostatic pressure through slabs</li>
+  <li>The Basement Guide: Water coming up through the basement floor; why basements flood with a working sump pump</li>
+</ul></div>
+<div class="src-group"><h3>Flooring, moisture standards & remediation</h3><ul class="srcs">
+  <li>ASTM F710 (slab prep &amp; moisture testing before resilient flooring), F2170 (in-situ RH), F1869 (calcium chloride), D4263 (plastic sheet)</li>
+  <li>Wagner Meters: ASTM F2170 compliance guidelines</li>
+  <li>CTLGroup: Concrete moisture-related flooring failures — causes and prevention</li>
+  <li>IICRC S500 water-damage restoration standard (non-porous flooring removal; mold colonization window)</li>
+  <li>Construction Specifier / INSTALL: substrate-prep moisture mistakes</li>
+</ul></div>
+<div class="src-group"><h3>Costs (2025–26, CT/New England where available)</h3><ul class="srcs">
+  <li>HomeGuide / Angi / HomeAdvisor: French drain, sump pump, battery backup, dehumidifier cost guides</li>
+  <li>Homeyou: French drain costs, Hartford CT</li>
+  <li>Basement Waterproofing Scientists / CrackX: slab crack repair cost guides</li>
+</ul></div>
+
+<footer>
+  <p><b>Method & disclosure.</b> This report was produced by a multi-agent AI research team (Claude) on August 1, 2026, from public sources, homeowner-supplied observations, and three photographs. Location is given as Weatogue/Simsbury, CT at neighborhood precision by design. Photos were re-encoded with all metadata removed.</p>
+  <p><b>Disclaimer.</b> This is research and analysis, not a professional engineering opinion. Costs are estimates from published guides. Before major spending, get an on-site assessment from a licensed basement waterproofing contractor (ask specifically about iron-ochre experience) and, for any structural questions, a professional engineer. If mold is extensive, use a certified remediation firm.</p>
+</footer>
+
+</div>
+</body>
+</html>
