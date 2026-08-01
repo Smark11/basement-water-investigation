@@ -115,3 +115,10 @@ Flooring verdict: wet-zone flooring is unsalvageable (adhesive re-emulsification
 - Created public repo `Smark11/basement-water-investigation`, pushed all commits, enabled GitHub Pages (main branch, root).
 - Live report: https://smark11.github.io/basement-water-investigation/
 - Investigation complete: cause effectively confirmed (rusted-through bulkhead + drainless stairwell → surface water riding the graded slab ~25 ft under the glued flooring to the sump-corner low point). Fix: tarp now → replace bulkhead (~$1,500-2,500); tear out + re-floor wet strip only; no French drain needed.
+
+### 17:40 — Contractor research (2 parallel agents, ~50 web lookups, all companies verified via live sites/listings)
+- Shortlist (get these 3 quotes first): Gibson Cellar Door, Kensington (specialist, Bilco+Gordon, concrete repair, Angi 4.9, HIC 0635611, 860-628-4400) · J.C. Tonnotti, Southington (47-yr firm, bulkhead replacement + sealing + concrete curb repair, 5.0/A+, HIC 614190, 860-621-1642) · Dino & Rocco's Waterproofing & Masonry, Newington (hatchway doors + in-house masonry + stairwell grate drains tied to sump, Simsbury service page, ~4.7, HIC 0647875, 860-436-5440).
+- Alternates: CT Cellar Doors, Oakville (highest-volume specialist, some workmanship/schedule complaints — scope in writing, HIC 0644013) · Budget Dry Waterproofing (4.7/352, HIC 616126) · Accent Windows & Doors (Simsbury-local, owner-installed, confirm concrete capability).
+- Pricing: ~$2,500-6,000 installed typical Hartford County; $5-10k if heavy masonry rebuild. Sealing-only ($1,800-2,500) not applicable to a rusted-through unit.
+- CT vetting guidance compiled: HIC lookup at elicense.ct.gov (gates the $25k Guaranty Fund), written contract w/ start+completion dates, 3-day cancel right, install-scope checklist, 3 bidder questions.
+- Published "Getting it fixed: who to call" section (+ TOC link) to the live report.
