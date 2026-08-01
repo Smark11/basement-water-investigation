@@ -57,6 +57,29 @@ Flooring verdict: wet-zone flooring is unsalvageable (adhesive re-emulsification
 - Wrote `README.md`. Initialized git repo on `main`, committed everything.
 - No street address anywhere in the published content; photos re-encoded with EXIF/GPS stripped.
 
+### 14:05 — New case fact from homeowner: basin is a drilled black barrel
+- The sump basin is a black barrel with field-drilled holes — a DIY-grade, pit-only install, almost certainly with NO perimeter drain tile. This strengthens ranked cause #1: small drilled holes are the geometry most easily blinded by iron ochre/silt, and with no tile the system never collected beyond the barrel's local drawdown radius.
+- Updated `index.html`: added a fifth "what we observed" fact card, folded the barrel evidence into cause #1, and rewrote diagnostic test 8 (no tile to camera-scope; restore = clean/ream or replace the basin, systemic = add real perimeter collection). Committed.
+- Advised homeowner on direct clog checks: scrape holes for ochre gel, bucket-hold test (sealed-bucket behavior = blinded holes), and the ¼" slab test hole comparing standing water level vs. pit level (higher = disconnected = clogged).
+
+### 14:15 — Homeowner field test: screwdriver through barrel holes
+- Result: hard to push through (holes packed with dense material — silt/ochre cake or native soil pressed against the barrel), and no water flowed in afterward.
+- Interpretation given: resistance = holes were not open (supports blinded-basin diagnosis). No inflow ≠ exoneration: silty soil seeps slowly (hours, not seconds), a blinding cake can extend into the soil beyond the hole, and hole depth matters — perched water sits just under the slab, so upper holes are the ones that would intercept it. Advised: inspect screwdriver tip for orange residue, clear multiple holes (especially upper ones), mark pit level and re-check over hours, then run the bucket-hold and ¼" slab test hole comparisons.
+
+### 14:25 — Homeowner follow-up: cleared hole still admits no water; asked about cleaning beyond the barrel
+- Advised (reach is inches, not feet — no way to clean soil at distance without a pipe to travel through):
+  1. Ream ALL holes with a drill bit + bottle brush, not one screwdriver pass.
+  2. Backflush each hole outward with a garden hose; hot-water soaks above the hole line to soften ochre gel (standard extension-service method). Orange return water = cake breaking up.
+  3. Drill a fresh row of 3/8"–1/2" holes just below slab level — perched water sits at slab underside, and fresh holes at that elevation bypass the ochre-skinned lower wall. Accept minor silt intrusion as the cost.
+  4. No muriatic acid in an enclosed pit (fumes/corrosion); mechanical + hot water only.
+- Decisive overnight experiment defined: refreshed basin + marked pit level + ¼" test hole in wet zone. Pit fills → reconnected (repeat flush seasonally). Test hole stands while pit stays dry → sub-slab layer is disconnected from the barrel; fix is slab-level collection (wet-side partial French drain to this pit, ~$1,800–2,800, report Tier 3).
+
+### 14:40 — Major field-evidence update: fresh holes dry + rusty hatchway upslope
+- Homeowner drilled several NEW 3/8" holes in the barrel: no water entered → soil at the barrel is not saturated → groundwater-at-the-pit theories weakened.
+- New case fact: an old rusty hatchway/bulkhead across the basement has leaked before; tiles near its door show discoloration; the slab GRADES toward the sump corner. Water entering there would travel on top of the slab under the glued flooring to the low point — pooling beside a pit that structurally cannot see it, picking up rust (orange tint!) from the steel.
+- Revised the report: new co-leading cause card "Hatchway surface entry" (~55%), blinded-barrel collection failure demoted to 40%, water table to 30%; field-update callout added under the hero insight and in the causes section; chart + aria-label revised; new starred "do this first" test (stairwell drain check + garden-hose test on the bulkhead, $0, <1 hr); test 5 (¼" slab hole) rewritten to discriminate top-of-slab vs under-slab water; renumbered remaining cause cards.
+- Fix path if hatchway confirms: stairwell drain cleanout ($0) / door re-seal ($20-100) / grading + downspouts / new bulkhead (~$1,500-2,500) — far cheaper than drainage retrofits.
+
 ### Pending
 - [ ] `gh auth login` (user action) — STILL NOT DONE; blocks publishing.
 - [ ] Create public GitHub repo `basement-water-investigation`, push, enable Pages, verify live URL.
