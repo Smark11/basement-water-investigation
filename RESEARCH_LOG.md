@@ -97,6 +97,11 @@ Flooring verdict: wet-zone flooring is unsalvageable (adhesive re-emulsification
 - Non-negotiable either way: trapped water under vapor-tight vinyl never dries in place — "fix the leak and leave tiles down" is NOT an option; wet zone must come up; respirator/gloves/photos (assume mold after weeks wet). LifeProof warranty excludes standing-water damage.
 - Report updated: green "LifeProof update" callout added above the flooring verdict; original glue-down verdict retained beneath it, conditioned on the planks actually being glued.
 
+### 15:25 — Volume verification: can hatchway water travel 25 ft? Yes, 5-10× over
+- New homeowner observation: seam seepage traces CONTINUOUSLY from the hatchway door ~25 ft to the sump room; hatchway end now dry, sump end still expressing water days after rain — the signature of a drained flow path with a terminal pool (and further confirmation the wet zone marks where water collects, not where it enters).
+- Math: Jul 28-29 storm = 4.3" on a ~30 sq ft bulkhead footprint ≈ 80 gallons direct rainfall through the rusted-open doors (before any downspout/grade contribution). Wetting the whole 25 ft × ~8 ft trail as a 1/16" film under the flooring ≈ 8 gallons (1/8" film ≈ 16 gal). One storm supplies 5-10× the full-path requirement; the surplus tens of gallons form the standing pool at the low corner. Distance is trivial: waterproof floor over smooth slab = sealed tilted channel; 1/8"/ft grade = 3" drop over 25 ft.
+- Report updated: fact card now records the continuous trail + drying gradient; cause #1 card gains the volume-check paragraph.
+
 ### Pending
 - [ ] `gh auth login` (user action) — STILL NOT DONE; blocks publishing.
 - [ ] Create public GitHub repo `basement-water-investigation`, push, enable Pages, verify live URL.
