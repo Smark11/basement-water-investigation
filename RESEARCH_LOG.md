@@ -91,6 +91,12 @@ Flooring verdict: wet-zone flooring is unsalvageable (adhesive re-emulsification
 - Report updated to final form on this evidence: hero "key insight" rewritten to the landed conclusion (water rides on top of the slab from the hatchway; the pump guards the ground and the water never touches the ground; fix starts at the top of the stairs), cause #1 at 85% "EFFECTIVELY CONFIRMED", fact card updated, starred test card now records the inspection results + urgent tarp/cover guidance, Tier 1 gains "cover the bulkhead" ($20-150, highest-leverage dollar), Tier 2 gains "replace the bulkhead" (~$1,500-2,500, now the primary water-path repair).
 - Advice to homeowner: bulkhead is beyond caulk/gaskets — replacement; tarp it before the next rain; flooring verdict and mold precautions unchanged.
 
+### 15:15 — Flooring identified: LifeProof (Home Depot) — salvage path likely
+- LifeProof = rigid-core SPC luxury vinyl: waterproof planks (no swelling/rot), and most LifeProof lines are CLICK-LOCK FLOATING, not glue-down — which conflicts with the earlier "glued down" description. Asked homeowner to check a plank edge at the wet seam (unclicks + no adhesive on slab = floating).
+- If floating: planks salvageable — lift wet zone + 2 ft margin (number with painter's tape), wash/disinfect both faces, inspect attached cork/foam underlayment pad (replace planks with moldy/musty pads, ~$3-4/sq ft for those only), scrub + disinfect slab, dry to passing plastic-sheet test, reinstall only after the bulkhead is covered/replaced and the floor stays dry through one real rain.
+- Non-negotiable either way: trapped water under vapor-tight vinyl never dries in place — "fix the leak and leave tiles down" is NOT an option; wet zone must come up; respirator/gloves/photos (assume mold after weeks wet). LifeProof warranty excludes standing-water damage.
+- Report updated: green "LifeProof update" callout added above the flooring verdict; original glue-down verdict retained beneath it, conditioned on the planks actually being glued.
+
 ### Pending
 - [ ] `gh auth login` (user action) — STILL NOT DONE; blocks publishing.
 - [ ] Create public GitHub repo `basement-water-investigation`, push, enable Pages, verify live URL.
