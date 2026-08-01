@@ -80,6 +80,12 @@ Flooring verdict: wet-zone flooring is unsalvageable (adhesive re-emulsification
 - Revised the report: new co-leading cause card "Hatchway surface entry" (~55%), blinded-barrel collection failure demoted to 40%, water table to 30%; field-update callout added under the hero insight and in the causes section; chart + aria-label revised; new starred "do this first" test (stairwell drain check + garden-hose test on the bulkhead, $0, <1 hr); test 5 (¼" slab hole) rewritten to discriminate top-of-slab vs under-slab water; renumbered remaining cause cards.
 - Fix path if hatchway confirms: stairwell drain cleanout ($0) / door re-seal ($20-100) / grading + downspouts / new bulkhead (~$1,500-2,500) — far cheaper than drainage retrofits.
 
+### 14:55 — Stairwell inspection: NO drain, base still damp days after rain
+- Homeowner inspected the bulkhead stairwell: no drain at the base of the steps; base still damp 3-4 days post-storm. Interpretation: the drainless stairwell is a storm-water holding tank whose only outlets are concrete joints and the gap under the door; still-damp days later = it held real volume and is discharging slowly — which also EXPLAINS the 1-3 day lag that had been the main argument for groundwater.
+- Explained "silt lines" (bathtub-ring sediment marks from standing water) to the homeowner.
+- Report updated: hatchway cause raised 55% → 70% ("LEADING"), evidence rewritten around the drainless-reservoir finding, starred test card updated with the inspection result + pre-rain mitigations (bulkhead cover/tarp, caulk door seams + sill joint, hydraulic cement inside once dry, downspout extension), chart aria-label revised.
+- Remaining confirmation steps: interior threshold/sill inspection for rust wicking + seam-trail origin; hose test after things dry.
+
 ### Pending
 - [ ] `gh auth login` (user action) — STILL NOT DONE; blocks publishing.
 - [ ] Create public GitHub repo `basement-water-investigation`, push, enable Pages, verify live URL.
