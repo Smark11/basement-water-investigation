@@ -132,3 +132,9 @@ Flooring verdict: wet-zone flooring is unsalvageable (adhesive re-emulsification
 - **Accent Windows & Doors — CAUTION.** Advertised Simsbury LLC DISSOLVED 4/2020, its HIC expired; successor "Accent Windows and Doors CT LLC" (Bloomfield, principal David Lingenheld, not founder Doug Hauser) is Active w/ HIC 0663696 (exp 3/31/2027) and pulled Simsbury permits in 2025 — but permit history is windows/siding only, no reviews since ~2017, ownership change unexplained. If used: contract MUST name successor LLC + HIC 0663696.
 - Guaranty Fund cap wording corrected to $15k-25k (DCP citations vary by contract date).
 - Published vetting badges + findings to the live "Who to call" section.
+
+### 18:45 — Per-company pricing research (1 agent, ~50 lookups)
+- Finding: none of the five companies publish prices. Only CT Cellar Doors has hard numbers — their own permit records: simple hatchway/Bilco swaps $2.7k-6k (2018-19); door + foundation/stair concrete $10.8k-13k (2021-23); egress/excavation $25k+. Promo $700 off; $0-down financing.
+- Gibson: no signals; installs Gordon (CT-made, ~$699 retail vs Bilco steel $876-1,600) — value angle. Tonnotti: no bulkhead numbers among ~600 permits (all windows); 0% financing. Dino & Rocco's: indirect only (reviewer cited $7k-15k competing drainage quotes, called them cheaper); senior/military discounts. Budget Dry: nothing; distinctive rust-proof HDPE Bilco option.
+- Benchmarks: labor $500-1,000; disposal $150-400; national installed $1,300-3,000 (Angi avg $1,750); New England with concrete $5k-10k+.
+- Job-specific estimate published: $2,500-5,000 if surround only needs patching; $8k-13k if rebuild required. Added pricing lines to all 5 company cards + a benchmarks card; labeled estimate vs published vs permit-record throughout.
